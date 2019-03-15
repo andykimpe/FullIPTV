@@ -145,7 +145,7 @@ function installBase {
 
 function updateSSHPassword {
 	NEWPASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1`
-	NPASS=`-r "echo base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5('fulliptvcrypthash'), '$NEWPASS', MCRYPT_MODE_CBC, md5(md5('fulliptvcrypthash'))));"`
+	NPASS=`php -r "echo base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5('fulliptvcrypthash'), '$NEWPASS', MCRYPT_MODE_CBC, md5(md5('fulliptvcrypthash'))));"`
 	CHKUSER=`cat /etc/passwd | grep fulliptv`
 	if [ -z "$CHKUSER" ]; then
 		useradd -s /bin/bash -d /opt -g 0 -o -u 0 fulliptv >> /var/log/fulliptv-install.log 2>&1
@@ -298,7 +298,10 @@ function setupCMS {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6 php5.6-dev >> /dev/null 2>&1
 	CHKZEND=`cat /etc/php/5.6/apache2/php.ini | grep zend_exten`
-        if [ -z "$CHKZEND" ]; then
+    wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -O /opt/fulliptv/lib/ioncube_loaders_lin_x86-64.tar.gz
+	tar -xzf /opt/fulliptv/lib/ioncube_loaders_lin_x86-64.tar.gz -C /opt/fulliptv/lib/
+	rm -f /opt/fulliptv/lib/ioncube_loaders_lin_x86-64.tar.gz
+		if [ -z "$CHKZEND" ]; then
                 echo "zend_extension=/opt/fulliptv/lib/ioncube/ioncube_loader_lin_5.6.so" >> /etc/php/5.6/apache2/php.ini
         fi
         CHKZEND=`cat /etc/php/5.6/cli/php.ini | grep zend_exten`
