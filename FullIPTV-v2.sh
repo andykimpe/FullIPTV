@@ -131,9 +131,9 @@ function installBase {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install software-properties-common >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install python-software-properties >> /dev/null 2>&1	
-	LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+	LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1	
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
         LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libjansson-dev -q -y --force-yes >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes -q install lsb-release apt-utils aptitude apt software-properties-common curl mtr debconf html2text wget whois whiptail vim-nox unzip tzdata sudo sysstat strace sshpass ssh-import-id tcpdump telnet screen python-software-properties python openssl ntpdate mc iptraf mailutils mlocate mtr htop gcc fuse ftp dnsutils ethtool curl dbconfig-common coreutils debianutils debconf bc bash-completion automake autoconf bwm-ng apt-utils aptitude apt git software-properties-common dos2unix dialog curl >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
@@ -240,6 +240,9 @@ function installCMSPackages {
 		# echo -e "host all all 0.0.0.0/0 md5\n" >> /etc/postgresql/9.3/main/pg_hba.conf
 		echo -e "listen_addresses = '*'\n" >> /etc/postgresql/9.3/main/postgresql.conf
 	else
+		echo "deb http://apt.postgresql.org/pub/repos/apt/ $DISTRIB_CODENAME-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+		wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -q >> /dev/null 2>&1
 		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install postgresql-9.3 -y --force-yes >> /dev/null 2>&1
 		echo -e "local all postgres trust\n" > /etc/postgresql/9.3/main/pg_hba.conf
 		echo -e "local all all trust\n" >> /etc/postgresql/9.3/main/pg_hba.conf
@@ -254,6 +257,17 @@ function installCMSPackages {
 
 function installStreamerPackages {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q dist-upgrade >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install software-properties-common >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install python-software-properties >> /dev/null 2>&1	
+	LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.5 php5.5-dev >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install daemontools postgresql-client x264 -q -y --force-yes >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get purge -y --force-yes -qq vlc-data vlc-nox vlc >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --force-yes -qq >> /dev/null 2>&1
@@ -271,6 +285,18 @@ function installStreamerPackages {
 }
 
 function setupCMS {
+		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q dist-upgrade >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install software-properties-common >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install python-software-properties >> /dev/null 2>&1	
+	LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.5 php5.5-dev >> /dev/null 2>&1
 	CHKZEND=`cat /etc/php/5.5/apache2/php.ini | grep zend_exten`
         if [ -z "$CHKZEND" ]; then
                 echo "zend_extension=/opt/fulliptv/lib/ioncube/ioncube_loader_lin_5.5.so" >> /etc/php/5.5/apache2/php.ini
