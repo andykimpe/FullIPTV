@@ -12,13 +12,15 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 locale-gen en_US.UTF-8  >> /dev/null 2>&1
 export LANG="en_US.UTF-8" >> /dev/null 2>&1
+$DISTRIB_CODENAME=bionic
+export $DISTRIB_CODENAME=bionic
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q dist-upgrade >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install software-properties-common gnupg2 >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install python-software-properties gnupg2 >> /dev/null 2>&1	
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install software-properties-common gnupg2 >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install python-software-properties gnupg2 >> /dev/null 2>&1	
 LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >> /dev/null 2>&1
 echo "deb http://apt.postgresql.org/pub/repos/apt/ $DISTRIB_CODENAME-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - >> /dev/null 2>&1
