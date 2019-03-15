@@ -19,6 +19,9 @@ LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/nul
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q dist-upgrade >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install software-properties-common gnupg2 >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install python-software-properties gnupg2 >> /dev/null 2>&1	
 LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >> /dev/null 2>&1
