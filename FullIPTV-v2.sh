@@ -123,19 +123,29 @@ deb-src http://security.ubuntu.com/ubuntu $DISTRIB_CODENAME-security multiverse
 
 # install base packages
 function installBase {
+	
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q dist-upgrade >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install software-properties-common >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install python-software-properties >> /dev/null 2>&1	
+	LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1	
         LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libjansson-dev -q -y --force-yes >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes -q install lsb-release apt-utils aptitude apt software-properties-common curl mtr debconf html2text wget whois whiptail vim-nox unzip tzdata sudo sysstat strace sshpass ssh-import-id tcpdump telnet screen python-software-properties python openssl ntpdate mc iptraf mailutils mlocate mtr htop gcc fuse ftp dnsutils ethtool curl dbconfig-common coreutils debianutils debconf bc bash-completion automake autoconf bwm-ng apt-utils aptitude apt git software-properties-common dos2unix dialog curl >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
+	
+	
 }
 
 
 
 function updateSSHPassword {
 	NEWPASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1`
-	NPASS=`php -r "echo base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5('fulliptvcrypthash'), '$NEWPASS', MCRYPT_MODE_CBC, md5(md5('fulliptvcrypthash'))));"`
+	NPASS=`-r "echo base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5('fulliptvcrypthash'), '$NEWPASS', MCRYPT_MODE_CBC, md5(md5('fulliptvcrypthash'))));"`
 	CHKUSER=`cat /etc/passwd | grep fulliptv`
 	if [ -z "$CHKUSER" ]; then
 		useradd -s /bin/bash -d /opt -g 0 -o -u 0 fulliptv >> /var/log/fulliptv-install.log 2>&1
@@ -205,8 +215,22 @@ function upgradeFiles {
 
 function installCMSPackages {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install php5-fpm php5-mcrypt php5-pgsql php5-cli php5-curl php5-gd php-pear libssh2-php php5-json libxslt1.1 daemontools postgresql-client -q -y --force-yes >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libva1 libxfixes3 libxext6 libasound2 libsdl1.2debian libtheora0 libmp3lame0 libass4 libvdpau1 daemontools postgresql-client apache2 php5 libapache2-mod-php5 -q -y --force-yes >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install php5.5-fpm php5.5-mcrypt php5.5-pgsql php5.5-cli php5.5-curl php5.5-gd php-pear libssh2-php5.5 libssh2-php php5.5-json libxslt1.1 daemontools postgresql-client -q -y --force-yes >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libva1 libxfixes3 libxext6 libasound2 libsdl1.2debian libtheora0 libmp3lame0 libass4 libvdpau1 daemontools postgresql-client apache2 php5.5 php5.6-dev libapache2-mod-php5.5 -q -y --force-yes >> /dev/null 2>&1
+	LANG=en_US.UTF-8 a2dismod php7.3 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 a2dismod php7.2 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 a2dismod php7.1 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 a2dismod php7.0 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 a2dismod php7 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 a2dismod php5 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 a2dismod php5.6 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 a2enmod php5.6 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 service apache2 restart >> /dev/null 2>&1
+	LANG=en_US.UTF-8 update-alternatives --set php /usr/bin/php5.5 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 update-alternatives --set phar /usr/bin/phar5.5 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 update-alternatives --set phar.phar /usr/bin/phar.phar5.5 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 update-alternatives --set phpize /usr/bin/phpize5.5 >> /dev/null 2>&1
+	LANG=en_US.UTF-8 update-alternatives --set php-config /usr/bin/php-config5.6 >> /dev/null 2>&1
 	if [ "$DISTRIB_CODENAME" != "trusty" ]; then
 		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install postgresql-9.3 -y --force-yes >> /dev/null 2>&1
 		echo -e "local all postgres trust\n" > /etc/postgresql/9.3/main/pg_hba.conf
@@ -236,35 +260,35 @@ function installStreamerPackages {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq ubuntu-restricted-extras >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update >> /dev/null 2>&1
 	if [ "$DISTRIB_CODENAME" = "saucy" ]; then
-		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc ffmpeg non-free-codecs x264 php5 php5-mcrypt >> /dev/null 2>&1
+		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc ffmpeg non-free-codecs x264 php5.5 php5.5-mcrypt >> /dev/null 2>&1
 	elif [ "$DISTRIB_CODENAME" = "trusty" ]; then
-		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc x264 php5 php5-mcrypt >> /dev/null 2>&1
+		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc x264 php5.5 php5.5-mcrypt >> /dev/null 2>&1
 	else 
-		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc ffmpeg non-free-codecs x264 php5 php5-mcrypt >> /dev/null 2>&1
+		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc ffmpeg non-free-codecs x264 php5.5 php5.5-mcrypt >> /dev/null 2>&1
 	fi
 
 	setupMcrypt;
 }
 
 function setupCMS {
-	CHKZEND=`cat /etc/php5/apache2/php.ini | grep zend_exten`
+	CHKZEND=`cat /etc/php/5.5/apache2/php.ini | grep zend_exten`
         if [ -z "$CHKZEND" ]; then
-                echo "zend_extension=/opt/fulliptv/lib/ioncube/ioncube_loader_lin_5.5.so" >> /etc/php5/apache2/php.ini
+                echo "zend_extension=/opt/fulliptv/lib/ioncube/ioncube_loader_lin_5.5.so" >> /etc/php/5.5/apache2/php.ini
         fi
-        CHKZEND=`cat /etc/php5/cli/php.ini | grep zend_exten`
+        CHKZEND=`cat /etc/php/5.5/cli/php.ini | grep zend_exten`
         if [ -z "$CHKZEND" ]; then
-                echo "zend_extension=/opt/fulliptv/lib/ioncube/ioncube_loader_lin_5.5.so" >> /etc/php5/cli/php.ini
+                echo "zend_extension=/opt/fulliptv/lib/ioncube/ioncube_loader_lin_5.5.so" >> /etc/php/5.5/cli/php.ini
         fi
         apt-get install -y --force-yes apache2 -q >> /dev/null 2>&1
         /etc/init.d/nginx stop >> /dev/null 2>&1
-        cp -R /etc/php5/conf.d/* /etc/php5/apache2/conf.d/ >> /dev/null 2>&1
-        cp -R /etc/php5/conf.d/* /etc/php5/cli/conf.d/ >> /dev/null 2>&1
+        cp -R /etc/php/5.5/conf.d/* /etc/php/5.5/apache2/conf.d/ >> /dev/null 2>&1
+        cp -R /etc/php/5.5/conf.d/* /etc/php/5.5/cli/conf.d/ >> /dev/null 2>&1
         php5enmod ssh2 >> /dev/null 2>&1
         php5enmod mcrypt >> /dev/null 2>&1
         a2enmod rewrite >> /dev/null 2>&1
 
         killall -9 nginx >> /dev/null 2>&1
-        killall -9 php5-fpm >> /dev/null 2>&1
+        killall -9 php5.5-fpm >> /dev/null 2>&1
         killall -9 php-fpm >> /dev/null 2>&1
 	echo "Listen $CMSPORT" > /etc/apache2/ports.conf
         echo "<VirtualHost *:$CMSPORT>
