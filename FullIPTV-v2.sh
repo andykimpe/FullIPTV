@@ -216,7 +216,7 @@ function upgradeFiles {
 function installCMSPackages {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6-json libxslt1.1 daemontools postgresql-client -q -y --force-yes >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libva1 libxfixes3 libxext6 libasound2 libsdl1.2debian libtheora0 libmp3lame0 libass4 libvdpau1 daemontools postgresql-client apache2 php5.6 php5.6-dev libapache2-mod-php5.6 -q -y --force-yes >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libva1 libxfixes3 libxext6 libasound2 libsdl1.2debian libtheora0 libmp3lame0 libass4 libvdpau1 daemontools postgresql-client apache2 php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois-q -y --force-yes >> /dev/null 2>&1
 	LANG=en_US.UTF-8 a2dismod php7.3 >> /dev/null 2>&1
 	LANG=en_US.UTF-8 a2dismod php7.2 >> /dev/null 2>&1
 	LANG=en_US.UTF-8 a2dismod php7.1 >> /dev/null 2>&1
@@ -267,18 +267,18 @@ function installStreamerPackages {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6 php5.6-dev >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois>> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install daemontools postgresql-client x264 -q -y --force-yes >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get purge -y --force-yes -qq vlc-data vlc-nox vlc >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --force-yes -qq >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq ubuntu-restricted-extras >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update >> /dev/null 2>&1
 	if [ "$DISTRIB_CODENAME" = "saucy" ]; then
-		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc ffmpeg non-free-codecs x264 php5.6 php5.6-mcrypt >> /dev/null 2>&1
+		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc ffmpeg non-free-codecs x264 php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois>> /dev/null 2>&1
 	elif [ "$DISTRIB_CODENAME" = "trusty" ]; then
-		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc x264 php5.6 php5.6-mcrypt >> /dev/null 2>&1
+		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc x264 php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois>> /dev/null 2>&1
 	else 
-		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc ffmpeg non-free-codecs x264 php5.6 php5.6-mcrypt >> /dev/null 2>&1
+		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq vlc-nox vlc ffmpeg non-free-codecs x264 php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois>> /dev/null 2>&1
 	fi
 
 	setupMcrypt;
@@ -296,7 +296,7 @@ function setupCMS {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6 php5.6-dev >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois>> /dev/null 2>&1
 	CHKZEND=`cat /etc/php/5.6/apache2/php.ini | grep zend_exten`
     wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -O /opt/fulliptv/lib/ioncube_loaders_lin_x86-64.tar.gz
 	tar -xzf /opt/fulliptv/lib/ioncube_loaders_lin_x86-64.tar.gz -C /opt/fulliptv/lib/
