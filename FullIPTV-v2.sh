@@ -12,8 +12,8 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 locale-gen en_US.UTF-8  >> /dev/null 2>&1
 export LANG="en_US.UTF-8" >> /dev/null 2>&1
-$DISTRIB_CODENAME=bionic
-export $DISTRIB_CODENAME=bionic
+DISTRIB_CODENAME=bionic
+export DISTRIB_CODENAME=bionic
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
