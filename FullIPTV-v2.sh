@@ -15,28 +15,28 @@ export LANG="en_US.UTF-8" >> /dev/null 2>&1
 DISTRIB_CODENAME=bionic
 export DISTRIB_CODENAME=bionic
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q dist-upgrade >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y  dist-upgrade >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install software-properties-common gnupg2 >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install python-software-properties gnupg2 >> /dev/null 2>&1	
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common gnupg2 >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install python-software-properties gnupg2 >> /dev/null 2>&1	
 LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >> /dev/null 2>&1
 echo "deb http://apt.postgresql.org/pub/repos/apt/ $DISTRIB_CODENAME-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libjansson-dev -q -y --force-yes >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes -q install lsb-release apt-utils aptitude apt software-properties-common curl mtr debconf html2text wget whois whiptail vim-nox unzip tzdata sudo sysstat strace sshpass ssh-import-id tcpdump telnet screen python-software-properties python openssl ntpdate mc iptraf mailutils mlocate mtr htop gcc fuse ftp dnsutils ethtool curl dbconfig-common coreutils debianutils debconf bc bash-completion automake autoconf bwm-ng apt-utils aptitude apt git software-properties-common dos2unix dialog curl >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libjansson-dev -y --force-yes >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes install lsb-release apt-utils aptitude apt software-properties-common curl mtr debconf html2text wget whois whiptail vim-nox unzip tzdata sudo sysstat strace sshpass ssh-import-id tcpdump telnet screen python-software-properties python openssl ntpdate mc iptraf mailutils mlocate mtr htop gcc fuse ftp dnsutils ethtool curl dbconfig-common coreutils debianutils debconf bc bash-completion automake autoconf bwm-ng apt-utils aptitude apt git software-properties-common dos2unix dialog curl >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install postgresql postgresql-9.3 -y -q >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt whois >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt whois >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt whois >> /dev/null 2>&1
-LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt whois >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt whois >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt whois >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt whois >> /dev/null 2>&1
+LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt whois >> /dev/null 2>&1
 LANG=en_US.UTF-8 a2dismod php7.3 >> /dev/null 2>&1
 LANG=en_US.UTF-8 a2dismod php7.2 >> /dev/null 2>&1
 LANG=en_US.UTF-8 a2dismod php7.1 >> /dev/null 2>&1
@@ -166,17 +166,17 @@ deb-src http://security.ubuntu.com/ubuntu $DISTRIB_CODENAME-security multiverse
 function installBase {
 	
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q dist-upgrade >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y  dist-upgrade >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install software-properties-common >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install python-software-properties >> /dev/null 2>&1	
 	LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
-    LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libjansson-dev -q -y --force-yes >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes -q install lsb-release apt-utils aptitude apt software-properties-common curl mtr debconf html2text wget whois whiptail vim-nox unzip tzdata sudo sysstat strace sshpass ssh-import-id tcpdump telnet screen python-software-properties python openssl ntpdate mc iptraf mailutils mlocate mtr htop gcc fuse ftp dnsutils ethtool curl dbconfig-common coreutils debianutils debconf bc bash-completion automake autoconf bwm-ng apt-utils aptitude apt git software-properties-common dos2unix dialog curl >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
+    LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libjansson-dev -y --force-yes >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes install lsb-release apt-utils aptitude apt software-properties-common curl mtr debconf html2text wget whois whiptail vim-nox unzip tzdata sudo sysstat strace sshpass ssh-import-id tcpdump telnet screen python-software-properties python openssl ntpdate mc iptraf mailutils mlocate mtr htop gcc fuse ftp dnsutils ethtool curl dbconfig-common coreutils debianutils debconf bc bash-completion automake autoconf bwm-ng apt-utils aptitude apt git software-properties-common dos2unix dialog curl >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 	
 	
@@ -256,8 +256,8 @@ function upgradeFiles {
 
 function installCMSPackages {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6-json libxslt1.1 daemontools postgresql-client -q -y --force-yes >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libva1 libxfixes3 libxext6 libasound2 libsdl1.2debian libtheora0 libmp3lame0 libass4 libvdpau1 daemontools postgresql-client apache2 php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois-q -y --force-yes >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6-json libxslt1.1 daemontools postgresql-client -y --force-yes >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install libva1 libxfixes3 libxext6 libasound2 libsdl1.2debian libtheora0 libmp3lame0 libass4 libvdpau1 daemontools postgresql-client apache2 php5.6-fpm php5.6-mcrypt php5.6-pgsql php5.6-cli php5.6-curl php5.6-gd php-pear libssh2-php5.6 libssh2-php php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois-y --force-yes >> /dev/null 2>&1
 	LANG=en_US.UTF-8 a2dismod php7.3 >> /dev/null 2>&1
 	LANG=en_US.UTF-8 a2dismod php7.2 >> /dev/null 2>&1
 	LANG=en_US.UTF-8 a2dismod php7.1 >> /dev/null 2>&1
@@ -298,18 +298,18 @@ function installCMSPackages {
 
 function installStreamerPackages {
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q dist-upgrade >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y  dist-upgrade >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install software-properties-common >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install python-software-properties >> /dev/null 2>&1	
 	LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois>> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install daemontools postgresql-client x264 -q -y --force-yes >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install daemontools postgresql-client x264 -y --force-yes >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get purge -y --force-yes -qq vlc-data vlc-nox vlc >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --force-yes -qq >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes -qq ubuntu-restricted-extras >> /dev/null 2>&1
@@ -327,15 +327,15 @@ function installStreamerPackages {
 
 function setupCMS {
 		LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -q dist-upgrade >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y  dist-upgrade >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install software-properties-common >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y -d install python-software-properties >> /dev/null 2>&1	
 	LANG=en_US.UTF-8 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
-	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y -q >> /dev/null 2>&1
+	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get update -y >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive dpkg --configure -a >> /dev/null 2>&1
 	LANG=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install php5.6 php5.6-dev libapache2-mod-php5.6 php5.6-mcrypt  whois>> /dev/null 2>&1
 	CHKZEND=`cat /etc/php/5.6/apache2/php.ini | grep zend_exten`
